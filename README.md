@@ -2,7 +2,8 @@
 
 ## Project setup
 ```
-npm install
+npm install --global cnpm
+cnpm install
 ```
 
 ### Compiles and hot-reloads for development
