@@ -10,8 +10,15 @@ import Menu from '../components/naraka/danmaku/source/menu/Menu'
 import Character from '../components/naraka/danmaku/source/tricks/Character'
 import Mission from '../components/naraka/danmaku/source/tricks/Mission'
 import Normal from '../components/naraka/danmaku/source/tricks/Normal'
-import Setting from '../components/naraka/danmaku/source/tricks/Setting'
 import Story from '../components/naraka/danmaku/source/tricks/Story'
+import Setting from '../components/naraka/danmaku/source/tricks/Setting'
+import SetMenu from '../components/naraka/danmaku/source/tricks/set/Menu'
+import Personal from '../components/naraka/danmaku/source/tricks/set/Personal'
+import SysSetting from '../components/naraka/danmaku/source/tricks/set/SysSetting'
+import GameSetting from '../components/naraka/danmaku/source/tricks/set/GameSetting'
+import Friends from '../components/naraka/danmaku/source/tricks/set/Friends'
+import Item from '../components/naraka/danmaku/source/tricks/set/Item'
+
 
 Vue.use(Router)
 
@@ -62,7 +69,28 @@ export default new Router({
           component: Story
         },{
           path: '/setting',
-          component: Setting
+          component: Setting,
+          children: [
+            {
+              path: '/',
+              component: SetMenu
+            },{
+              path: '/setting/personal',
+              component: Personal
+            },{
+              path: '/setting/friends',
+              component: Friends
+            },{
+              path: '/setting/gameSetting',
+              component: GameSetting
+            },{
+              path: '/setting/item',
+              component: Item
+            },{
+              path: '/setting/sysSetting',
+              component: SysSetting
+            },
+          ]
         },{
           path: '/mission',
           component: Mission

@@ -25,6 +25,7 @@
       <li>获取新角色需要用碎片合成，开局会给300万能碎片，100个可以换一个新角色。</li>
       <li>角色需要使用角色碎片升级。</li>
       <li>可以同卡组队。</li>
+      <li>选择强化到最大等级时，默认消耗掉所有的专属碎片和万能碎片。</li>
     </ul>
     <h2>- 卡面信息</h2>
     <div style="margin-top: 15px;padding: 0 20px;text-align: center">
@@ -65,6 +66,7 @@
           </ul>
         </el-col>
       </el-row>
+      <p>卡面的动态效果（Live2D）需要开花3次解锁</p>
     </div>
   </div>
 </template>

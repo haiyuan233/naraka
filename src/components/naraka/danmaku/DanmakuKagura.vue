@@ -17,8 +17,9 @@
               <router-link to="/normal"><el-menu-item index="1-3-1">基本玩法</el-menu-item></router-link>
               <router-link to="/character"><el-menu-item index="1-3-2">角色养成</el-menu-item></router-link>
               <router-link to="/mission"><el-menu-item index="1-3-3">新手任务</el-menu-item></router-link>
-              <router-link to="/story"><el-menu-item index="1-3-4">主线剧情</el-menu-item></router-link>
-              <router-link to="/setting"><el-menu-item index="1-3-5">设置页面</el-menu-item></router-link>
+              <router-link to="/setting"><el-menu-item index="1-3-4">设置页面</el-menu-item></router-link>
+              <el-menu-item index="1-3-5" disabled>主线剧情（施工）</el-menu-item>
+<!--              <router-link to="/story"><el-menu-item index="1-3-5">主线剧情</el-menu-item></router-link>-->
             </el-submenu>
           </el-submenu>
           <el-menu-item index="2" disabled>

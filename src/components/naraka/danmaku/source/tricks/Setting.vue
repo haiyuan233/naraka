@@ -1,8 +1,8 @@
 <template>
   <div class="info">
     <h2>- 设置页面</h2>
-    <div style="margin-top: 15px;padding: 0 20px">
-      施工中
+    <div style="padding: 0 20px;text-align: center">
+      <router-view></router-view>
     </div>
   </div>
 </template>

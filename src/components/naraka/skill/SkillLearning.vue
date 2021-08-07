@@ -1,7 +1,7 @@
 <template>
   <div class="skillDiv">
     <el-row>
-      <el-col offset="2" :span="10">
+      <el-col :offset="2" :span="10">
         <div class="circle">
           <div class="skill">
             <div class="skill-box">
