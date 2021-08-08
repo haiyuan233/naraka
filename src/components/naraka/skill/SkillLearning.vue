@@ -183,15 +183,30 @@
       </el-col>
       <el-col :span="10">
         <div class="setting">
-          <div class="data-list">
-            <h2>印记加成效果</h2>
-            <template v-for="item in title">
-              <p v-bind:key="item" v-if="sumTotal(item[0], total) !== 0">
-              {{ item[1] }} : {{sumTotal(item[0], total) + item[2]}}
+          <el-row>
+            <el-col :offset="2" :span="10">
+              <div class="data-list">
+                <h2>印记加成</h2>
+                <template v-for="item in title">
+                  <p v-bind:key="item.index" v-if="sumTotal(item[0], total) !== 0">
+                    {{ item[1] }} : {{ sumTotal(item[0], total) + item[2] }}
+                  </p>
+                </template>
+              </div>
+            </el-col>
+            <el-col :offset="1" :span="10">
+              <div class="data-list">
+                <h2>印记选择</h2>
+                <template v-for="item in typeTotal">
+                  <p v-bind:key="item.index" v-if=" item.data !== 0">
+                    {{ item.name }} : {{ item.data }}
+                  </p>
+                </template>
+              </div>
+            </el-col>
+          </el-row>
 
-              </p>
-            </template>
-          </div>
+
 
         </div>
       </el-col>
@@ -216,98 +231,211 @@ export default {
   data: function () {
     return {
       skillData: params.skill,
+      types: [
+        [0, '万物'],
+        [1, '极阴'],
+        [2, '极阳'],
+        [3, '本源'],
+      ],
       title: [
-        [0, '幸运值',''],
-        [1, '初始怒气','%'],
-        [2, '技能冷却速度','%'],
-        [3, '飞索距离','%'],
-        [4, '飞索速度','%'],
-        [5, '每秒怒气回复','%'],
-        [6, '每秒精力回复','%'],
-        [7, '精力上限','%'],
-        [8, '闪避精力消耗','%'],
-        [9, '伤害怒气转换','%'],
-        [10, '受伤怒气转换','%'],
-        [11, '魂冢能量损失速度','%'],
-        [12, '受到暗域伤害降低','%'],
-        [13, '货郎折扣','%'],
-        [14, '每10秒获得暗潮币',''],
-        [15, '救援速度','%'],
-        [16, '敌方血条存在时间','%']
+        [0, '幸运值', ''],
+        [1, '初始怒气', '%'],
+        [2, '技能冷却速度', '%'],
+        [3, '飞索距离', '%'],
+        [4, '飞索速度', '%'],
+        [5, '每秒怒气回复', '%'],
+        [6, '每秒精力回复', '%'],
+        [7, '精力上限', '%'],
+        [8, '闪避精力消耗', '%'],
+        [9, '伤害怒气转换', '%'],
+        [10, '受伤怒气转换', '%'],
+        [11, '魂冢能量损失速度', '%'],
+        [12, '受到暗域伤害降低', '%'],
+        [13, '货郎折扣', '%'],
+        [14, '每10秒获得暗潮币', ''],
+        [15, '救援速度', '%'],
+        [16, '敌方血条存在时间', '%']
+      ],
+      typeTotal: [
+        {
+          name: '万物·狐商',
+          type: '万物',
+          data: 0,
+        }, {
+          name: '万物·犬怒',
+          type: '万物',
+          data: 0,
+        }, {
+          name: '万物·鼠行',
+          type: '万物',
+          data: 0,
+        }, {
+          name: '万物·水润',
+          type: '万物',
+          data: 0,
+        }, {
+          name: '万物·顽石',
+          type: '万物',
+          data: 0,
+        }, {
+          name: '极阴·暴怒',
+          type: '极阴',
+          data: 0,
+        }, {
+          name: '极阴·洞悉',
+          type: '极阴',
+          data: 0,
+        }, {
+          name: '极阴·反噬',
+          type: '极阴',
+          data: 0,
+        }, {
+          name: '极阴·灵巧',
+          type: '极阴',
+          data: 0,
+        }, {
+          name: '极阴·魔索',
+          type: '极阴',
+          data: 0,
+        }, {
+          name: '极阳·急速',
+          type: '极阳',
+          data: 0,
+        }, {
+          name: '极阳·耐阴',
+          type: '极阳',
+          data: 0,
+        }, {
+          name: '极阳·奇迹',
+          type: '极阳',
+          data: 0,
+        }, {
+          name: '极阳·神索',
+          type: '极阳',
+          data: 0,
+        }, {
+          name: '极阳·天选',
+          type: '极阳',
+          data: 0,
+        }, {
+          name: '本源·生财',
+          type: '本源',
+          data: 0,
+        }, {
+          name: '本源·生财',
+          type: '本源',
+          data: 0,
+        }, {
+          name: '本源·生财',
+          type: '本源',
+          data: 0,
+        }, {
+          name: '本源·生财',
+          type: '本源',
+          data: 0,
+        }, {
+          name: '本源·生财',
+          type: '本源',
+          data: 0,
+        },
       ],
       total: [
         {
           name: 'menu11',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          type: '无'
         }, {
           name: 'menu12',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          type: '无'
         }, {
           name: 'menu13',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          type: '无'
         }, {
           name: 'menu14',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          type: '无'
         }, {
           name: 'menu15',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          type: '无'
         }, {
           name: 'menu16',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          type: '无'
         }, {
           name: 'menu21',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          type: '无'
         }, {
           name: 'menu22',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          type: '无'
         }, {
           name: 'menu23',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          type: '无'
         }, {
           name: 'menu24',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          type: '无'
         }, {
           name: 'menu25',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          type: '无'
         }, {
           name: 'menu26',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          type: '无'
         }, {
           name: 'menu31',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          type: '无'
         }, {
           name: 'menu32',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          type: '无'
         }, {
           name: 'menu33',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          type: '无'
         }, {
           name: 'menu34',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          type: '无'
         }, {
           name: 'menu35',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          type: '无'
         }, {
           name: 'menu36',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          type: '无'
         }, {
           name: 'menu41',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          type: '无'
         }, {
           name: 'menu42',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          type: '无'
         }, {
           name: 'menu43',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          type: '无'
         }, {
           name: 'menu44',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          type: '无'
         }, {
           name: 'menu45',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          type: '无'
         }, {
           name: 'menu46',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          type: '无'
         }
       ]
     }
@@ -319,9 +447,12 @@ export default {
       total.forEach(item => {
         if (item.name === msg.tag) {
           item.data = msg.data
+          item.type = msg.name
+          console.log( item.type )
         }
       })
       this.total = total
+      this.sunType()
     },
     sumTotal(num, total) {
       let sum = 0
@@ -329,15 +460,112 @@ export default {
         sum += item.data[num]
       })
       return sum
+    },
+    sunType() {
+      let typeTotal = [
+            {
+              name: '万物·狐商',
+              type: '万物',
+              data: 0,
+            }, {
+              name: '万物·犬怒',
+              type: '万物',
+              data: 0,
+            }, {
+              name: '万物·鼠行',
+              type: '万物',
+              data: 0,
+            }, {
+              name: '万物·水润',
+              type: '万物',
+              data: 0,
+            }, {
+              name: '万物·顽石',
+              type: '万物',
+              data: 0,
+            }, {
+              name: '极阴·暴怒',
+              type: '极阴',
+              data: 0,
+            }, {
+              name: '极阴·洞悉',
+              type: '极阴',
+              data: 0,
+            }, {
+              name: '极阴·反噬',
+              type: '极阴',
+              data: 0,
+            }, {
+              name: '极阴·灵巧',
+              type: '极阴',
+              data: 0,
+            }, {
+              name: '极阴·魔索',
+              type: '极阴',
+              data: 0,
+            }, {
+              name: '极阳·急速',
+              type: '极阳',
+              data: 0,
+            }, {
+              name: '极阳·耐阴',
+              type: '极阳',
+              data: 0,
+            }, {
+              name: '极阳·奇迹',
+              type: '极阳',
+              data: 0,
+            }, {
+              name: '极阳·神索',
+              type: '极阳',
+              data: 0,
+            }, {
+              name: '极阳·天选',
+              type: '极阳',
+              data: 0,
+            }, {
+              name: '本源·生财',
+              type: '本源',
+              data: 0,
+            }, {
+              name: '本源·生财',
+              type: '本源',
+              data: 0,
+            }, {
+              name: '本源·生财',
+              type: '本源',
+              data: 0,
+            }, {
+              name: '本源·生财',
+              type: '本源',
+              data: 0,
+            }, {
+              name: '本源·生财',
+              type: '本源',
+              data: 0,
+            },
+          ]
+      let total = this.total
+      total.forEach(tot => {
+        typeTotal.forEach(item => {
+          if (item.name === tot.type) {
+            console.log(tot.type)
+            console.log(item.name)
+            item.data = item.data + 1
+          }
+        })
+      })
+      this.typeTotal = typeTotal
     }
   }
 }
 </script>
 
 <style scoped>
-.skillDiv{
+.skillDiv {
   text-align: center;
 }
+
 .circle {
   position: relative;
   z-index: 0;

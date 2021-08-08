@@ -6,7 +6,8 @@
         <li>Android 8.0&nbsp+&nbsp/&nbspIOS13&nbsp+&nbsp</li>
         <li>为Android环境时，不能获取ROOT权限后运行</li>
         <li>操作系统为x64</li>
-        <li>支持谷歌框架</li>
+        <li>需要支持谷歌框架</li>
+        <li>路由器刷固件FQ的情况下可以用夜神模拟器测试版运行，在使用有支持触摸的驱动板显示器上可以正常游玩</li>
       </ul>
     </div>
     <h2>- 游戏前准备</h2>

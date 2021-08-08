@@ -4,35 +4,35 @@
       <li>
         <el-tooltip placement="left">
           <div slot="content">{{ sData[0].name }}<br/>{{ sData[0].effect }}</div>
-          <a @click="clickIco(sData[0].img, sData[0].data)" target="_blank" class="fa">
+          <a @click="clickIco(sData[0].img, sData[0].data,sData[0].name)" target="_blank" class="fa">
             <img :src="url(sData[0].img)" width="100%" height="100%"></a>
         </el-tooltip>
       </li>
       <li>
         <el-tooltip placement="right">
           <div slot="content">{{ sData[1].name }}<br/>{{ sData[1].effect }}</div>
-          <a @click="clickIco(sData[1].img, sData[1].data)" target="_blank" class="fa">
+          <a @click="clickIco(sData[1].img, sData[1].data,sData[1].name)" target="_blank" class="fa">
             <img :src="url(sData[1].img)" width="100%" height="100%"></a>
         </el-tooltip>
       </li>
       <li>
         <el-tooltip placement="right">
           <div slot="content">{{ sData[2].name }}<br/>{{ sData[2].effect }}</div>
-          <a @click="clickIco(sData[2].img, sData[2].data)" target="_blank" class="fa">
+          <a @click="clickIco(sData[2].img, sData[2].data,sData[2].name)" target="_blank" class="fa">
             <img :src="url(sData[2].img)" width="100%" height="100%"></a>
         </el-tooltip>
       </li>
       <li>
         <el-tooltip placement="left">
           <div slot="content">{{ sData[3].name }}<br/>{{ sData[3].effect }}</div>
-          <a @click="clickIco(sData[3].img, sData[3].data)" target="_blank" class="fa">
+          <a @click="clickIco(sData[3].img, sData[3].data,sData[3].name)" target="_blank" class="fa">
             <img :src="url(sData[3].img)" width="100%" height="100%"></a>
         </el-tooltip>
       </li>
       <li>
         <el-tooltip placement="left">
           <div slot="content">{{ sData[4].name }}<br/>{{ sData[4].effect }}</div>
-          <a @click="clickIco(sData[4].img, sData[4].data)" target="_blank" class="fa">
+          <a @click="clickIco(sData[4].img, sData[4].data,sData[4].name)" target="_blank" class="fa">
             <img :src="url(sData[4].img)" width="100%" height="100%"></a>
         </el-tooltip>
       </li>
@@ -74,11 +74,12 @@ export default {
     }
   },
   methods: {
-    clickIco(pic, data){
+    clickIco(pic, data, name){
       this.imgUrl = require('../../../assets/' + pic)
       let res = {
         data:data,
-        tag:this.tag
+        tag:this.tag,
+        name:name
       }
       this.$emit('total', res)
       // console.log(data)
@@ -87,7 +88,8 @@ export default {
       this.imgUrl = pic
       let res = {
         data:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-        tag:this.tag
+        tag:this.tag,
+        name:'无'
       }
       this.$emit('total', res)
       // console.log([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
